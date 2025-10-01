@@ -1,0 +1,10 @@
+<!-- src/app/components/header/header.component.html -->
+<nav class="bg-gray-800 text-white p-3 flex gap-4">
+  <a
+    *ngFor="let link of navLinks"
+    [routerLink]="link.path"
+    routerLinkActive="underline"
+  >
+    {{ link.label }}
+  </a>
+</nav>

@@ -1,0 +1,13 @@
+<!-- landing.header.component.html -->
+<nav class="header-nav">
+  <ul class="nav-main">
+    <li *ngFor="let link of navLinks">
+      <a [routerLink]="link.path">{{ link.label }}</a>
+    </li>
+  </ul>
+  <ul class="nav-auth">
+    <li *ngFor="let link of authLinks">
+      <a [routerLink]="link.path">{{ link.label }}</a>
+    </li>
+  </ul>
+</nav>
