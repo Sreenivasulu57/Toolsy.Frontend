@@ -1,12 +1,58 @@
-<!-- src/app/components/footer/footer.component.html -->
-<footer class="bg-gray-200 text-center py-4 mt-6">
-  <div class="text-sm text-gray-700">
-    Tool Rental Platform. All rights reserved.
+<footer class="footer-container">
+  <div class="footer-content">
+    <!-- Left Section -->
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <i class="pi pi-wrench tool-icon"></i>
+        <span class="brand">
+          <span class="tool">Tool</span><span class="sy">sy</span>
+        </span>
+      </div>
+      <p class="tagline">Why buy when you<br> can Toolsy?</p>
+      <p class="desc">
+        Connecting tool owners, renters, and skilled operators in one seamless platform.
+      </p>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a routerLink="/about">About Us</a></li>
+        <li><a routerLink="/how-it-works">How It Works</a></li>
+        <li><a routerLink="/categories">Categories</a></li>
+        <li><a routerLink="/safety">Safety Guidelines</a></li>
+        <li><a routerLink="/privacy">Privacy Policy</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="footer-contact">
+      <h4>Contact Info</h4>
+      <p><i class="pi pi-phone"></i> +91 98765 43210</p>
+      <p><i class="pi pi-envelope"></i> support@toolsy.com</p>
+      <p><i class="pi pi-map-marker"></i> Mumbai, India</p>
+    </div>
+
+    <!-- Social Links -->
+    <div class="footer-social">
+      <h4>Follow Us</h4>
+      <div class="social-icons">
+        <a href="#"><i class="pi pi-facebook"></i></a>
+        <a href="#"><i class="pi pi-twitter"></i></a>
+        <a href="#"><i class="pi pi-instagram"></i></a>
+        <a href="#"><i class="pi pi-linkedin"></i></a>
+      </div>
+      <p class="social-text">Stay updated with the latest tools and opportunities</p>
+    </div>
   </div>
 
-  <div class="flex justify-center gap-4 mt-2 text-blue-600 text-sm">
-    <a routerLink="/about">About</a>
-    <a routerLink="/contact">Contact</a>
-    <a routerLink="/privacy">Privacy Policy</a>
+  <hr />
+
+  <div class="footer-bottom">
+    <p>
+      © 2025 Toolsy. All rights reserved. Made with
+      <i class="pi pi-heart heart"></i> in India
+    </p>
   </div>
 </footer>

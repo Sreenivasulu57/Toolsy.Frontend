@@ -1,4 +1,128 @@
-/* src/app/components/footer/footer.component.css */
-footer {
-  border-top: 1px solid #d1d5db; /* subtle top border */
+.footer-container {
+  background-color: #0c1325;
+  color: #d1d5db;
+  padding: 3rem 2rem;
+  font-family: "Inter", sans-serif;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.tool {
+  color: #f97316; /* Orange */
+}
+
+.sy {
+  color: #fff;
+}
+
+.tool-icon {
+  color: #f97316;
+  font-size: 1.5rem;
+  margin-right: 0.4rem;
+}
+
+.tagline {
+  font-weight: 600;
+  margin: 0.5rem 0;
+  color: #f8fafc;
+}
+
+.desc {
+  font-size: 0.9rem;
+  color: #9ca3af;
+  max-width: 280px;
+}
+
+.footer-links h4,
+.footer-contact h4,
+.footer-social h4 {
+  color: #f8fafc;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 0.4rem;
+}
+
+.footer-links a {
+  color: #9ca3af;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: #f97316;
+}
+
+.footer-contact p {
+  margin: 0.4rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: #9ca3af;
+}
+
+.footer-social .social-icons {
+  display: flex;
+  gap: 0.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer-social a {
+  background-color: #1e293b;
+  color: #fff;
+  border-radius: 50%;
+  padding: 0.6rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.footer-social a:hover {
+  background-color: #f97316;
+}
+
+.social-text {
+  color: #9ca3af;
+  font-size: 0.85rem;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #1f2937;
+  margin: 2rem 0 1rem;
+}
+
+.footer-bottom {
+  text-align: center;
+  color: #9ca3af;
+  font-size: 0.85rem;
+}
+
+.heart {
+  color: #ef4444;
+  vertical-align: middle;
 }

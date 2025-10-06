@@ -7,7 +7,7 @@ import { RouterLink } from '@angular/router';
   standalone:true,
   imports: [CommonModule,RouterLink],
   templateUrl: './header.html',
-  styleUrl: './header.css'
+  styleUrls: ['./header.css']
 })
 export class Header {
    @Input() navLinks: { label: string; path: string }[] = [];

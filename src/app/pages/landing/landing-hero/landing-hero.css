@@ -1,0 +1,27 @@
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 60px 10%;
+}
+
+.hero-left {
+  flex: 1;
+  max-width: 50%;
+}
+
+.hero-right {
+  flex: 1;
+  max-width: 50%;
+}
+
+.hero-right img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.highlight {
+  color: #ff7300;
+}

@@ -1,13 +1,32 @@
-<!-- landing.header.component.html -->
-<nav class="header-nav">
-  <ul class="nav-main">
-    <li *ngFor="let link of navLinks">
-      <a [routerLink]="link.path">{{ link.label }}</a>
-    </li>
-  </ul>
-  <ul class="nav-auth">
-    <li *ngFor="let link of authLinks">
-      <a [routerLink]="link.path">{{ link.label }}</a>
-    </li>
-  </ul>
-</nav>
+<header class="header">
+  <div class="nav-container">
+    
+    <!-- Logo / Brand -->
+  <div class="logo">
+  <a routerLink="/">
+    <span class="logo-orange">Tool</span><span class="logo-black">sy</span>
+  </a>
+</div>
+
+
+    <!-- Navigation links dynamically rendered -->
+    <nav class="nav-links">
+      <a *ngFor="let link of navLinks"
+         [routerLink]="link.path"
+         routerLinkActive="active"
+         class="nav-link">
+        {{ link.label }}
+      </a>
+    </nav>
+
+    <!-- Auth buttons dynamically rendered -->
+    <div class="auth-buttons">
+      <a *ngFor="let link of authLinks"
+         [routerLink]="link.path"
+         class="btn"
+         [ngClass]="link.type === 'login' ? 'login' : 'signup'">
+        {{ link.label }}
+      </a>
+    </div>
+  </div>
+</header>

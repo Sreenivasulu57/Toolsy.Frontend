@@ -11,5 +11,5 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 })
 export class LandingHeader {
   @Input() navLinks: { label: string; path: string }[] = [];
-  @Input() authLinks:{label:string;path:string}[]=[]
+  @Input() authLinks:{label:string;path:string;type:string}[]=[]
 }

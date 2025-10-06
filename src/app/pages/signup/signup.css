@@ -1,0 +1,86 @@
+/* Full page background */
+.signup-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 20px;
+  background: linear-gradient(135deg, #1e3c72, #2a5298); /* Blue gradient */
+}
+
+/* Main container */
+.signup-container {
+  text-align: center;
+  color: #ffffff;
+  max-width: 800px;
+}
+
+/* Title */
+.signup-title {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.signup-subtitle {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  opacity: 0.85;
+}
+
+/* Card layout */
+.signup-cards {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Individual card */
+.signup-card {
+  width: 280px;
+  background: #ffffff;
+  text-align: center;
+  padding: 20px;
+  border-radius: 12px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  color: #333;
+}
+
+.signup-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+}
+
+.signup-card h2 {
+  margin: 10px 0;
+  font-size: 1.3rem;
+  color: #ff6600; /* Toolsy orange */
+}
+
+.signup-card p {
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  color: #555;
+}
+
+/* Icon style */
+.signup-icon {
+  font-size: 2.5rem;
+  color: #ff6600;
+  margin-bottom: 10px;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .signup-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .signup-card {
+    width: 100%;
+    max-width: 350px;
+  }
+}

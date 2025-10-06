@@ -1,0 +1,209 @@
+/* ===========================
+   Reset & Base Styles
+=========================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body, html {
+  height: 100%;
+  background-color: #f0f2f5; /* Page background color */
+}
+
+/* ===========================
+   Container
+=========================== */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  background: #f0f2f5;
+}
+
+/* ===========================
+   Card
+=========================== */
+.login-card {
+  background-color: #ffffff; /* Form background */
+  padding: 60px 40px;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+  width: 100%;
+  max-width: 500px;
+  transition: transform 0.3s;
+}
+
+.login-card:hover {
+  transform: translateY(-5px);
+}
+
+/* ===========================
+   Header
+=========================== */
+.login-header {
+  text-align: center;
+  margin-bottom: 35px;
+  position: relative;
+}
+
+.login-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: #ff6600; /* Keep the text orange */
+  letter-spacing: 1px;
+  position: relative;
+  transition: font-size 0.3s ease;
+}
+
+/* Animated underline in black */
+.login-title::after {
+  content: '';
+  display: block;
+  width: 70px;
+  height: 4px;
+  background-color: #000000; /* Line is now black */
+  margin: 8px auto 0;
+  border-radius: 2px;
+  transition: width 0.3s ease-in-out;
+}
+
+/* Hover effect: underline grows more, title slightly bigger */
+.login-title:hover::after {
+  width: 140px;
+}
+
+.login-title:hover {
+  font-size: 38px;
+}
+
+/* ===========================
+   Form
+=========================== */
+.form-group {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 16px 14px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  transition: 0.3s;
+  background: transparent;
+}
+
+/* Focus changes border to black instead of orange */
+.form-group input:focus {
+  border-color: #000000;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.form-group label {
+  position: absolute;
+  top: 16px;
+  left: 14px;
+  font-size: 16px;
+  color: #999;
+  pointer-events: none;
+  transition: 0.3s;
+}
+
+/* Floating label effect */
+.form-group input:focus + label,
+.form-group input:not(:placeholder-shown) + label {
+  top: -10px;
+  left: 10px;
+  font-size: 12px;
+  color: #000000; /* Label turns black on focus */
+  background: #ffffff;
+  padding: 0 4px;
+}
+
+/* ===========================
+   Login Button
+=========================== */
+.login-button {
+  width: 100%;
+  padding: 16px;
+  background-color: #ff6600;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.login-button:hover {
+  background-color: #e55b00;
+  transform: scale(1.02);
+}
+
+/* ===========================
+   Links
+=========================== */
+.login-links {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.login-links a {
+  font-size: 14px;
+  color: #ff6600;
+  text-decoration: none;
+  transition: color 0.2s, font-size 0.2s;
+}
+
+.login-links a:hover {
+  color: #000000;
+  font-size: 15px;
+}
+
+/* ===========================
+   Responsive
+=========================== */
+@media screen and (max-width: 768px) {
+  .login-card {
+    padding: 50px 30px;
+    max-width: 450px;
+  }
+
+  .login-title {
+    font-size: 32px;
+  }
+
+  .login-button {
+    font-size: 16px;
+    padding: 14px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .login-card {
+    padding: 40px 20px;
+    max-width: 100%;
+  }
+
+  .login-title {
+    font-size: 28px;
+  }
+
+  .login-button {
+    font-size: 15px;
+    padding: 12px;
+  }
+
+  .login-links a {
+    font-size: 13px;
+  }
+}

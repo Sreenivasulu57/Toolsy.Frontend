@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { Header } from './header';
 
 describe('Header', () => {
@@ -8,9 +7,8 @@ describe('Header', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Header]
-    })
-    .compileComponents();
+      imports: [Header] // ✅ standalone component goes in imports
+    }).compileComponents(); // ✅ no argument here
 
     fixture = TestBed.createComponent(Header);
     component = fixture.componentInstance;

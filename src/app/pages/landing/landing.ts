@@ -5,6 +5,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 import { Footer } from '../../components/footer/footer/footer';
 import { LandingHeader } from './landing.header/landing.header';
 import { App } from "../../app";
+import { LandingHero } from "./landing-hero/landing-hero";
 
 @Component({
   selector: 'app-landing',
@@ -15,7 +16,8 @@ import { App } from "../../app";
     CommonModule,
     RouterLink,
     RouterOutlet,
-    App
+    App,
+    LandingHero
 ],
   templateUrl: './landing.html',
   styleUrls: ['./landing.css']
@@ -27,8 +29,9 @@ export class Landing {
     { label: 'Contact', path: '/contact' }
   ];
 
-  authLinks = [
-    { label: 'Login', path: '/login' },
-    { label: 'Signup', path: '/signup' }
-  ];
+authLinks = [
+  { path: '/login', label: 'Login', type: 'login' },
+  { path: '/signup', label: 'Sign Up', type: 'signup' }
+];
+
 }
