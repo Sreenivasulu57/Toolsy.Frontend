@@ -84,3 +84,7 @@
     max-width: 350px;
   }
 }
+.signup-card button {
+  margin-top: 15px;
+  width: 100%;
+}
