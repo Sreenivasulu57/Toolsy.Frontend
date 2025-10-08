@@ -1,14 +1,151 @@
 <section class="hero">
   <div class="hero-left">
     <h1>Welcome to <span class="highlight">Toolsy</span></h1>
-    <p>From professional tool rentals to skilled operators, Toolsy connects you with everything you need to get the job done.</p>
+
+    <p>
+      From professional tool rentals to skilled operators, <br />
+      Toolsy connects you with everything you need to <br />
+      get the job done.
+    </p>
+
     <div class="hero-buttons">
       <button class="btn-primary">Get Started Today</button>
       <button class="btn-secondary">Learn More</button>
     </div>
   </div>
+
   <div class="hero-right">
-    <img src="/toolsy-frontend/src/assets/LandingHeader.jpegnpm install primeng " alt="Professional tool operator" />
+    <img
+      src="assets/images/LandingHeader.png"
+      height="100px"
+      width="200px"
+      alt="Professional tool operator"
+    />
   </div>
 </section>
 
+<section class="banner-fixed">
+  <div class="banner-content-left">
+    <h1>{{ currentContent.title }}</h1>
+    <p>{{ currentContent.subtitle }}</p>
+    <button class="btn-primary banner-cta">{{ currentContent.buttonText }}</button>
+  </div>
+
+  <div class="banner-content-right">
+    <button
+      class="feature-btn primary-feature"
+      [class.active]="activeFeature === 'free_listing'"
+      (click)="handleFeatureClick('free_listing')"
+    >
+      Free Listing
+    </button>
+
+    <button
+      class="feature-btn secondary-feature"
+      [class.active]="activeFeature === 'connect_makers'"
+      (click)="handleFeatureClick('connect_makers')"
+    >
+      Connect with Owner
+    </button>
+
+    <button
+      class="feature-btn secondary-feature"
+      [class.active]="activeFeature === 'explore_tools'"
+      (click)="handleFeatureClick('explore_tools')"
+    >
+      Explore New Tools
+    </button>
+  </div>
+</section>
+
+<section class="banner-section">
+  <h2 class="banner-header">Why Choose Toolsy?</h2>
+  <p class="banner-header-para">
+    Experience the future of tool sharing and professional services
+  </p>
+
+  <div class="banner-container">
+    <div class="banner-card">
+      <img src="assets/images/banner1.jpg" alt="Tools on Rent" />
+      <div class="banner-text">
+        <h3>Rent Tools Easily</h3>
+        <p>Get any tool you need at hourly, daily, or monthly rates.</p>
+      </div>
+    </div>
+
+    <div class="banner-card">
+      <img src="assets/images/banner2.jpg" alt="Power Tools" />
+      <div class="banner-text">
+        <h3>Power Tools for Every Job</h3>
+        <p>Find top-quality equipment from trusted brands.</p>
+      </div>
+    </div>
+
+    <div class="banner-card">
+      <img src="assets/images/banner3.jpg" alt="Construction Equipment" />
+      <div class="banner-text">
+        <h3>Heavy Equipment Available</h3>
+        <p>Rent machines for construction or industrial work.</p>
+      </div>
+    </div>
+
+    <div class="banner-card">
+      <img src="assets/images/banner4.jpg" alt="Tool Insurance" />
+      <div class="banner-text">
+        <h3>Tool Insurance Protection</h3>
+        <p>
+          Secure your rentals with insurance coverage for accidental damage or
+          loss.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how-it-works-section">
+    <div class="container">
+        <h2>How Toolsy Works</h2>
+        <p class="subtitle">Get Started in Three Simple Steps to Get Your Tools.</p>
+        
+        <div class="steps-grid">
+            
+            <div class="step-card step-1">
+                <div class="icon-wrapper">
+                    <span class="icon">🔍</span>
+                </div>
+                <h3>Browse & Find</h3>
+                <p>Effortlessly search for specific tools or skilled operators near you.</p>
+            </div>
+            
+            <div class="step-arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+            </div>
+
+            <div class="step-card step-2">
+                <div class="icon-wrapper">
+                    <span class="icon">🔒</span>
+                </div>
+                <h3>Rent & Secure</h3>
+                <p>Select your rental plan (hourly, daily, monthly) and book securely with insurance.</p>
+            </div>
+            
+            <div class="step-arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+            </div>
+
+            <div class="step-card step-3">
+                <div class="icon-wrapper">
+                    <span class="icon">✅</span>
+                </div>
+                <h3>Use & Return</h3>
+                <p>Utilize the tool or service, and return upon job completion. Easy!</p>
+            </div>
+        </div>
+    </div>
+</section>

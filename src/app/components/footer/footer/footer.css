@@ -30,6 +30,11 @@
   color: #fff;
 }
 
+.brand>.tool:hover{
+
+  background-color:darkblue;
+}
+
 .tool-icon {
   color: #f97316;
   font-size: 1.5rem;
