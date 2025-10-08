@@ -24,7 +24,29 @@
   text-decoration: none;
   font-size: 1.5rem;
   font-weight: bold;
-  color: #ff6600; /* Logo in orange */
+     display: flex;
+    align-items: center;
+  /* color: #ff6600;  Logo in orange */
+}
+
+.brand-logo {
+    /* Adjust these values to fit your design */
+    height: 5rem; /* Match the font size for a good vertical alignment */
+    width: auto;
+    margin-right: 7px; /* Space between the logo and the "Toolsy" text */
+    /* Optional: Ensure the image is block-level */
+    display: block; 
+
+      /* NEW: Position it absolutely, vertically centered */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%); 
+    
+    /* You may need to add left: 0; depending on your setup */
+    left: 0;
+    
+    /* Add padding to the <a> tag to reserve space for the logo */
+    padding-left: 17rem; /* Must be at least the width of your logo */
 }
 
 /* Navigation links */
