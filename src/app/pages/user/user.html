@@ -1,1 +1,33 @@
-<p>User works</p>
+<app-header 
+  [fullName]="user ? user.firstName + ' ' + user.lastName : ''" 
+  [profileImageUrl]="user?.profileImageUrl"  
+  [notificationsCount]="3">
+</app-header>
+
+
+<div class="page-container">
+  
+  <app-sidebar></app-sidebar>
+
+  
+  <main class="user-content">
+    <div class="user-container" *ngIf="!loading && user">
+      <h2>Welcome, {{ user.firstName }} {{ user.lastName }}</h2>
+      <img
+        *ngIf="user.profileImageUrl"
+        [src]="user.profileImageUrl"
+        alt="Profile"
+        class="profile-img"
+      />
+      <ul>
+        <li><strong>Email:</strong> {{ user.email }}</li>
+        <li><strong>Phone:</strong> {{ user.phoneNumber }}</li>
+        <li><strong>DOB:</strong> {{ user.dateOfBirth | date }}</li>
+        <li><strong>Gender:</strong> {{ user.gender }}</li>
+      </ul>
+    </div>
+
+    <div *ngIf="loading" class="loading">Loading user info...</div>
+    <div *ngIf="error" class="error">{{ error }}</div>
+  </main>
+</div>

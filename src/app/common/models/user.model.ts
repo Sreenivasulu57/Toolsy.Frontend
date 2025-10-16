@@ -5,8 +5,7 @@ export interface RegisterUserDto {
   lastName: string;
   email: string;
   phoneNumber: string;
-  dateOfBirth: Date;
+  dateOfBirth: Date ;
   gender: Gender;
   password: string;
-  profileImageUrl: string;
 }

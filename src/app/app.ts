@@ -6,6 +6,6 @@ import { CommonModule } from '@angular/common';
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, CommonModule],
-  template: `<router-outlet></router-outlet>` // this is the key
+  template: `<router-outlet></router-outlet>`, 
 })
 export class App {}
