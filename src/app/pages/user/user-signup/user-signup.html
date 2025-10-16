@@ -1,1 +1,36 @@
-<p>user-signup works!</p>
+
+<p-toast/>
+<div class="signup-wrapper">
+  <div class="signup-container">
+    <h1 class="signup-title">Create an Account</h1>
+    <p class="signup-subtitle">Enter your details below to create your account</p>
+
+    <form #form="ngForm" (ngSubmit)="register(form)" class="signup-form">
+      <div class="input-group">
+        <input type="text" pInputText name="firstName" [(ngModel)]="user.firstName" placeholder="First Name" required />
+        <input type="text" pInputText name="lastName" [(ngModel)]="user.lastName" placeholder="Last Name" required />
+      </div>
+
+      <input type="email" pInputText name="email" [(ngModel)]="user.email" placeholder="Email" required />
+      <input type="text" pInputText name="phoneNumber" [(ngModel)]="user.phoneNumber" placeholder="Phone Number" required />
+
+      <div class="input-group">
+        <input type="date" pInputText name="dateOfBirth" [(ngModel)]="userDateOfBirthString" required />
+        <select pInputText name="gender" [(ngModel)]="user.gender" required>
+          <option value="" disabled selected>Gender</option>
+          <option [value]="Gender.Male">Male</option>
+          <option [value]="Gender.Female">Female</option>
+        </select>
+      </div>
+
+      <input type="password" pInputText name="password" [(ngModel)]="user.password" placeholder="Password" required />
+      <input type="password" pInputText name="confirmPassword" [(ngModel)]="confirmPassword" placeholder="Confirm Password" required />
+
+      <div *ngIf="passwordMismatch" class="error-msg">Passwords do not match!</div>
+
+      <button pButton type="submit" class="signup-btn" [disabled]="!form.valid || passwordMismatch">
+        Register
+      </button>
+    </form>
+  </div>
+</div>

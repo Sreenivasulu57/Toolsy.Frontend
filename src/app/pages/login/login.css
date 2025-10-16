@@ -1,6 +1,4 @@
-/* ===========================
-   Reset & Base Styles
-=========================== */
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -10,12 +8,10 @@
 
 body, html {
   height: 100%;
-  background-color: #f0f2f5; /* Page background color */
+  background-color: #f0f2f5; 
 }
 
-/* ===========================
-   Container
-=========================== */
+
 .login-container {
   display: flex;
   justify-content: center;
@@ -25,11 +21,9 @@ body, html {
   background: #f0f2f5;
 }
 
-/* ===========================
-   Card
-=========================== */
+
 .login-card {
-  background-color: #ffffff; /* Form background */
+  background-color: #ffffff; 
   padding: 60px 40px;
   border-radius: 12px;
   box-shadow: 0 12px 30px rgba(0,0,0,0.2);
@@ -42,9 +36,7 @@ body, html {
   transform: translateY(-5px);
 }
 
-/* ===========================
-   Header
-=========================== */
+
 .login-header {
   text-align: center;
   margin-bottom: 35px;
@@ -54,25 +46,25 @@ body, html {
 .login-title {
   font-size: 36px;
   font-weight: 700;
-  color: #ff6600; /* Keep the text orange */
+  color: #ff6600; 
   letter-spacing: 1px;
   position: relative;
   transition: font-size 0.3s ease;
 }
 
-/* Animated underline in black */
+
 .login-title::after {
   content: '';
   display: block;
   width: 70px;
   height: 4px;
-  background-color: #000000; /* Line is now black */
+  background-color: #000000; 
   margin: 8px auto 0;
   border-radius: 2px;
   transition: width 0.3s ease-in-out;
 }
 
-/* Hover effect: underline grows more, title slightly bigger */
+
 .login-title:hover::after {
   width: 140px;
 }
@@ -81,9 +73,7 @@ body, html {
   font-size: 38px;
 }
 
-/* ===========================
-   Form
-=========================== */
+
 .form-group {
   position: relative;
   margin-bottom: 30px;
@@ -100,7 +90,6 @@ body, html {
   background: transparent;
 }
 
-/* Focus changes border to black instead of orange */
 .form-group input:focus {
   border-color: #000000;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
@@ -116,20 +105,18 @@ body, html {
   transition: 0.3s;
 }
 
-/* Floating label effect */
+
 .form-group input:focus + label,
 .form-group input:not(:placeholder-shown) + label {
   top: -10px;
   left: 10px;
   font-size: 12px;
-  color: #000000; /* Label turns black on focus */
+  color: #000000; 
   background: #ffffff;
   padding: 0 4px;
 }
 
-/* ===========================
-   Login Button
-=========================== */
+
 .login-button {
   width: 100%;
   padding: 16px;
@@ -148,9 +135,6 @@ body, html {
   transform: scale(1.02);
 }
 
-/* ===========================
-   Links
-=========================== */
 .login-links {
   margin-top: 20px;
   display: flex;
@@ -169,9 +153,7 @@ body, html {
   font-size: 15px;
 }
 
-/* ===========================
-   Responsive
-=========================== */
+
 @media screen and (max-width: 768px) {
   .login-card {
     padding: 50px 30px;
@@ -206,4 +188,13 @@ body, html {
   .login-links a {
     font-size: 13px;
   }
+}
+.login-button[disabled] {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+.form-group input::placeholder {
+  color: transparent; 
 }

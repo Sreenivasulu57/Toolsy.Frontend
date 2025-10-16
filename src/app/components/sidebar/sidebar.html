@@ -1,0 +1,14 @@
+<aside class="sidebar">
+
+  <nav class="nav-links">
+    <a
+      *ngFor="let link of navLinks"
+      [routerLink]="link.path"
+      routerLinkActive="active-link"
+      class="nav-link"
+    >
+      <i *ngIf="link.icon" class="{{ link.icon }}"></i>
+      <span>{{ link.label }}</span>
+    </a>
+  </nav>
+</aside>

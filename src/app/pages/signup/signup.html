@@ -4,20 +4,24 @@
     <p class="signup-subtitle">Choose how you want to sign up</p>
 
     <div class="signup-cards">
-      <!-- User Signup Card -->
+     
       <div class="signup-card">
         <i class="pi pi-user signup-icon"></i>
         <h2>User Signup</h2>
         <p>Sign up to explore and use tools as a regular user.</p>
-        <button pButton type="button" label="Sign Up as User" class="p-button-success w-full"></button>
+        <button class="signup-btn user-btn" (click)="goToUserSignup()">
+          Sign Up as User
+        </button>
       </div>
 
-      <!-- Owner Signup Card -->
+      
       <div class="signup-card">
         <i class="pi pi-briefcase signup-icon"></i>
         <h2>Owner Signup</h2>
         <p>Sign up as an owner to list and manage your tools.</p>
-        <button pButton type="button" label="Sign Up as Owner" class="p-button-warning w-full"></button>
+        <button class="signup-btn owner-btn" (click)="goToOwnerSignup()">
+          Sign Up as Owner
+        </button>
       </div>
     </div>
   </div>
