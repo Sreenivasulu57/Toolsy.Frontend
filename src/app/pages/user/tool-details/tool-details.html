@@ -1,0 +1,121 @@
+<div class="tool-details-container" *ngIf="!loading() && tool(); else loadingTpl">
+  <div class="back-btn-container">
+    <button class="back-btn" (click)="goBack()">← Back</button>
+  </div>
+
+  <div class="tool-header">
+    <h2>{{ tool()?.name }}</h2>
+    <p class="brand-model">
+      <strong>Brand:</strong> {{ tool()?.brand || 'N/A' }} | <strong>Model:</strong>
+      {{ tool()?.model || 'N/A' }}
+    </p>
+  </div>
+
+  <div class="tool-main">
+    <div class="image-gallery">
+      <img
+        [src]="selectedImage()"
+        alt="Selected tool image"
+        class="main-image"
+        (error)="selectedImage.set('')"
+      />
+      <div class="thumbnail-row">
+        <img
+          *ngFor="let img of tool()?.toolImages; let i = index"
+          [src]="img.imageUrl"
+          [class.selected]="i === selectedImageIndex()"
+          (click)="selectImage(img.imageUrl, i)"
+          [alt]="img.altText"
+        />
+      </div>
+    </div>
+
+    <div class="tool-info">
+      <h3>Description</h3>
+      <p>{{ tool()?.description || 'No description available.' }}</p>
+
+      <div class="condition">
+        <strong>Condition:</strong>
+        <span [class]="getConditionClass(tool()?.condition)">
+          {{ getConditionText(tool()?.condition) }}
+        </span>
+      </div>
+
+      <div class="rates">
+        <h3>Rental Rates</h3>
+        <ul>
+          <li><strong>Hourly:</strong> ₹{{ tool()?.hourlyRate }}</li>
+          <li><strong>Daily:</strong> ₹{{ tool()?.dailyRate }}</li>
+          <li><strong>Weekly:</strong> ₹{{ tool()?.weeklyRate }}</li>
+          <li><strong>Monthly:</strong> ₹{{ tool()?.monthlyRate }}</li>
+        </ul>
+      </div>
+
+      <div class="specifications" *ngIf="tool()?.toolSpecifications?.length">
+        <h3>Specifications</h3>
+        <table>
+          <tr>
+            <th>Name</th>
+            <th>Value</th>
+            <th>Unit</th>
+          </tr>
+          <tr *ngFor="let spec of tool()?.toolSpecifications">
+            <td>{{ spec.name }}</td>
+            <td>{{ spec.value }}</td>
+            <td>{{ spec.unit }}</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="safety-info">
+        <div *ngIf="tool()?.requiresOperator">
+          <h3>Operator Requirements</h3>
+          <p>{{ tool()?.operatorRequirements }}</p>
+        </div>
+
+        <div *ngIf="tool()?.safetyInstructions">
+          <h3>Safety Instructions</h3>
+          <p>{{ tool()?.safetyInstructions }}</p>
+        </div>
+      </div>
+
+      <div class="rental-section">
+        <h3>Rent This Tool</h3>
+
+        <label>Rental Duration</label>
+        <select [(ngModel)]="rentalDuration">
+          <option value="hourly">Hourly - ₹{{ tool()?.hourlyRate }}</option>
+          <option value="daily">Daily - ₹{{ tool()?.dailyRate }}</option>
+          <option value="weekly">Weekly - ₹{{ tool()?.weeklyRate }}</option>
+          <option value="monthly">Monthly - ₹{{ tool()?.monthlyRate }}</option>
+        </select>
+
+        <label>Start Date</label>
+        <input type="date" [(ngModel)]="startDate" (change)="onDateChange()" />
+
+        <label>End Date</label>
+        <input type="date" [(ngModel)]="endDate" (change)="onDateChange()" />
+
+        <label>Quantity</label>
+        <input type="number" min="1" [(ngModel)]="quantity" />
+
+        <div class="availability" *ngIf="checkingAvailability()">Checking availability...</div>
+        <div class="availability success" *ngIf="isAvailable() === true">Tool is available!</div>
+        <div class="availability error" *ngIf="isAvailable() === false">
+          Tool unavailable for selected dates.
+        </div>
+
+        <div class="price-display">
+          <strong>Total: ₹{{ getTotalPrice() }}</strong>
+        </div>
+
+        <button class="book-btn" (click)="bookTool()">Book Now</button>
+        <button class="fav-btn" (click)="addToFavorites()">❤️ Add to Favorites</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #loadingTpl>
+  <div class="loading">Loading tool details...</div>
+</ng-template>
