@@ -1,0 +1,212 @@
+<div class="tool-catalog-container">
+  <div *ngIf="loading" class="loading-state">
+    <div class="spinner"></div>
+    <p>Loading catalog...</p>
+  </div>
+
+  <div *ngIf="error && !loading" class="error-state">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="48"
+      height="48"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+    >
+      <circle cx="12" cy="12" r="10"></circle>
+      <line x1="12" y1="8" x2="12" y2="12"></line>
+      <line x1="12" y1="16" x2="12.01" y2="16"></line>
+    </svg>
+    <p>{{ error }}</p>
+    <button class="retry-btn" (click)="loadCategories()">Retry</button>
+  </div>
+
+  <div *ngIf="!loading && !error" class="catalog-content">
+    <h2 class="section-title">Browse Tool Categories</h2>
+
+    <div class="categories-grid">
+      <div *ngFor="let category of categories" class="category-card">
+        <div class="category-image-wrapper">
+          <img [src]="category.iconUrl" [alt]="category.name" class="category-image" />
+          <div class="category-overlay">
+            <span class="category-count">{{ category.subCategories.length }} subcategories</span>
+          </div>
+        </div>
+
+        <div class="category-content">
+          <h3 class="category-name">{{ category.name }}</h3>
+          <p class="category-description">{{ category.description }}</p>
+
+          <div class="subcategories-section" *ngIf="category.subCategories.length > 0">
+            <button
+              class="dropdown-toggle"
+              (click)="toggleDropdown(category.toolCategoryId)"
+              [class.active]="isDropdownOpen(category.toolCategoryId)"
+            >
+              <span>View Subcategories</span>
+              <svg
+                class="dropdown-icon"
+                [class.rotated]="isDropdownOpen(category.toolCategoryId)"
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+
+            <div class="subcategories-dropdown" *ngIf="isDropdownOpen(category.toolCategoryId)">
+              <div
+                *ngFor="let subCategory of category.subCategories"
+                class="subcategory-item"
+                (click)="selectSubCategory(subCategory)"
+              >
+                <img
+                  [src]="subCategory.iconUrl"
+                  [alt]="subCategory.name"
+                  class="subcategory-icon"
+                />
+                <div class="subcategory-info">
+                  <h4 class="subcategory-name">{{ subCategory.name }}</h4>
+                  <p class="subcategory-tools-count">
+                    {{ subCategory.tools.length }} tools available
+                  </p>
+                </div>
+                <svg
+                  class="arrow-icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="selectedSubCategory" class="tools-section">
+      <div class="tools-header">
+        <button class="back-btn" (click)="selectedSubCategory = null">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+          Back to Categories
+        </button>
+        <h2 class="tools-title">{{ selectedSubCategory.name }}</h2>
+        <p class="tools-description">{{ selectedSubCategory.description }}</p>
+      </div>
+
+      <div class="tools-grid">
+        <div *ngFor="let tool of selectedSubCategory.tools" class="tool-card">
+          <div class="tool-image-wrapper" (click)="viewToolDetails(tool)">
+            <img [src]="getPrimaryImage(tool)" [alt]="tool.name" class="tool-image" />
+            <span class="condition-badge" [class]="'condition-' + tool.condition">
+              {{ getConditionText(tool.condition) }}
+            </span>
+          </div>
+
+          <div class="tool-content">
+            <div class="tool-brand">{{ tool.brand }}</div>
+            <h3 class="tool-name">{{ tool.name }}</h3>
+            <p class="tool-model">Model: {{ tool.model }}</p>
+
+            <div class="tool-specs" *ngIf="tool.toolSpecifications.length > 0">
+              <span *ngFor="let spec of tool.toolSpecifications" class="spec-badge">
+                {{ spec.name }}: {{ spec.value }} {{ spec.unit }}
+              </span>
+            </div>
+
+            <div class="tool-rates">
+              <div class="rate-item">
+                <span class="rate-label">Hourly</span>
+                <span class="rate-value">₹{{ tool.hourlyRate }}</span>
+              </div>
+              <div class="rate-item">
+                <span class="rate-label">Daily</span>
+                <span class="rate-value">₹{{ tool.dailyRate }}</span>
+              </div>
+              <div class="rate-item">
+                <span class="rate-label">Weekly</span>
+                <span class="rate-value">₹{{ tool.weeklyRate }}</span>
+              </div>
+            </div>
+
+            <div class="tool-actions">
+              <button class="btn-primary" (click)="rentTool(tool)">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <circle cx="9" cy="21" r="1"></circle>
+                  <circle cx="20" cy="21" r="1"></circle>
+                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                Rent Now
+              </button>
+              <button class="btn-secondary" (click)="viewToolDetails(tool)">View Details</button>
+            </div>
+
+            <div class="tool-operator-info" *ngIf="tool.requiresOperator">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+              </svg>
+              <span>Requires certified operator</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="selectedSubCategory.tools.length === 0" class="no-tools">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="64"
+          height="64"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="8" x2="12" y2="12"></line>
+          <line x1="12" y1="16" x2="12.01" y2="16"></line>
+        </svg>
+        <p>No tools available in this category yet.</p>
+      </div>
+    </div>
+  </div>
+</div>

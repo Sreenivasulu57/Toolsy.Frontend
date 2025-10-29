@@ -3,11 +3,10 @@ import { Component, Input, OnInit } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '../../common/services/auth.service';
 
-
 interface NavLink {
   label: string;
   path: string;
-  icon?: string; 
+  icon?: string;
 }
 
 @Component({
@@ -15,7 +14,7 @@ interface NavLink {
   standalone: true,
   imports: [CommonModule, RouterLink, RouterLinkActive],
   templateUrl: './sidebar.html',
-  styleUrls: ['./sidebar.css']
+  styleUrls: ['./sidebar.css'],
 })
 export class Sidebar implements OnInit {
   @Input() appTitle: string = 'Toolsy';
@@ -49,7 +48,7 @@ export class Sidebar implements OnInit {
     } else {
       this.role = 'User';
       this.navLinks = [
-        { label: 'Dashboard', path: '/user/dashboard', icon: 'pi pi-home' },
+        { label: 'Dashboard', path: '/user', icon: 'pi pi-home' },
         { label: 'Search Tools', path: '/user/search', icon: 'pi pi-search' },
         { label: 'Favorites', path: '/user/favorites', icon: 'pi pi-heart' },
         { label: 'Bookings', path: '/user/bookings', icon: 'pi pi-calendar' },

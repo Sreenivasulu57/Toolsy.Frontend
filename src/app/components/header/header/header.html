@@ -1,5 +1,4 @@
 <header class="header">
-
   <div class="left-section">
     <img src="./../../../../assets/images/tool_logo.png" alt="Toolsy" class="logo-img" />
     <span class="logo-text">
@@ -8,12 +7,17 @@
   </div>
 
   <div class="search-container">
-    <input type="text" placeholder="Search tools, categories..." class="search-input" />
+    <input
+      type="text"
+      placeholder="Search tools, categories..."
+      class="search-input"
+      [(ngModel)]="searchTerm"
+      disabled
+    />
     <i class="pi pi-search search-icon"></i>
   </div>
 
   <div class="right-section">
-  
     <div class="notification">
       <i class="pi pi-bell"></i>
       <span class="badge" *ngIf="notificationsCount > 0">{{ notificationsCount }}</span>
@@ -25,11 +29,16 @@
         [label]="profileImageUrl ? '' : initials"
         shape="circle"
         styleClass="header-avatar"
-        [icon]="!profileImageUrl ? 'pi pi-user' : ''">
+        [icon]="!profileImageUrl ? 'pi pi-user' : ''"
+      >
       </p-avatar>
 
       <span class="user-name">
-        {{ fullName ? (fullName.split(' ')[0].charAt(0) + ' ' + fullName.split(' ').slice(1).join(' ')) : '' }}
+        {{
+          fullName
+            ? fullName.split(' ')[0].charAt(0) + ' ' + fullName.split(' ').slice(1).join(' ')
+            : ''
+        }}
       </span>
 
       <i class="pi pi-chevron-down"></i>

@@ -1,0 +1,189 @@
+<div class="tool-page-container">
+  <!-- Back Button -->
+  <div class="back-btn-container">
+    <button class="back-btn" (click)="goBackToUser()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+      Back to Dashboard
+    </button>
+  </div>
+
+  <!-- Toolbar -->
+  <div class="toolbar">
+    <div class="search-box">
+      <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <input
+        type="text"
+        placeholder="Search tools..."
+        [(ngModel)]="search"
+        (keyup.enter)="searchTools()"
+        class="search-input"
+      />
+    </div>
+
+    <div class="sort-filter">
+      <label for="sortBy">Sort by:</label>
+      <select id="sortBy" [(ngModel)]="sortBy" (change)="changeSort($event)">
+        <option value="name">Name</option>
+        <option value="price-low">Price: Low to High</option>
+        <option value="price-high">Price: High to Low</option>
+        <option value="newest">Newest</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Loading State -->
+  <div *ngIf="loading" class="loading-state">
+    <div class="spinner"></div>
+    <p>Loading tools...</p>
+  </div>
+
+  <!-- Error State -->
+  <div *ngIf="error && !loading" class="error-state">
+    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="12" cy="12" r="10"></circle>
+      <line x1="12" y1="8" x2="12" y2="12"></line>
+      <line x1="12" y1="16" x2="12.01" y2="16"></line>
+    </svg>
+    <p>{{ error }}</p>
+    <button class="retry-btn" (click)="fetchTools()">Try Again</button>
+  </div>
+
+  <!-- Tools Grid -->
+  <div class="tools-grid" *ngIf="!loading && tools.length > 0">
+    <div class="tool-card" *ngFor="let tool of tools" (click)="viewToolDetails(tool.toolId)">
+      <!-- Tool Image -->
+      <div class="tool-image-wrapper">
+        <img 
+          [src]="tool.toolImages?.[0]?.imageUrl || '/assets/placeholder.png'" 
+          [alt]="tool.name"
+          class="tool-image"
+        />
+        <span class="condition-badge" [ngClass]="getConditionClass(tool.condition)">
+          {{ getConditionText(tool.condition) }}
+        </span>
+        <div class="hover-overlay">
+          <button class="quick-view-btn" (click)="viewToolDetails(tool.toolId)">
+            Quick View
+          </button>
+        </div>
+      </div>
+
+      <!-- Tool Content -->
+      <div class="tool-content">
+        <!-- Category Badge -->
+        <div class="tool-header">
+          <span class="tool-category">{{ tool.brand }}</span>
+        </div>
+
+        <!-- Tool Name -->
+        <h3 class="tool-name">{{ tool.name }}</h3>
+        
+        <!-- Tool Model -->
+        <p class="tool-model">{{ tool.model }} • {{ tool.manufactureYear }}</p>
+
+        <!-- Tool Description -->
+        <p class="tool-description">
+          {{ tool.description.length > 80 ? (tool.description | slice:0:80) + '...' : tool.description }}
+        </p>
+
+        <!-- Rating -->
+        <div class="tool-rating">
+          <div class="stars">
+            <span *ngFor="let star of getRatingStars(4.5)" class="star" [ngClass]="star">★</span>
+          </div>
+          <span class="rating-text">4.5 (24 reviews)</span>
+        </div>
+
+        <!-- Specifications Preview -->
+        <div class="tool-specs-preview" *ngIf="tool.toolSpecifications.length > 0">
+          <span *ngFor="let spec of tool.toolSpecifications.slice(0, 2)" class="spec-tag">
+            {{ spec.name }}: {{ spec.value }}{{ spec.unit }}
+          </span>
+        </div>
+
+        <!-- Operator Badge -->
+        <div class="operator-badge" *ngIf="tool.requiresOperator">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+          Requires Operator
+        </div>
+
+        <!-- Pricing -->
+        <div class="tool-pricing">
+          <div class="price-main">
+            <span class="currency">₹</span>
+            <span class="amount">{{ tool.dailyRate | number:'1.0-0' }}</span>
+            <span class="period">/day</span>
+          </div>
+          <div class="price-options">
+            <span class="price-option">₹{{ tool.hourlyRate }}/hr</span>
+            <span class="price-option">₹{{ tool.weeklyRate }}/wk</span>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="tool-actions">
+          <button class="btn-book" (click)="bookTool(tool, $event)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 2v4m6-4v4M4 8h16M4 10v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V10"></path>
+            </svg>
+            Book Now
+          </button>
+          <button class="btn-details" (click)="viewToolDetails(tool.toolId)">
+            Details
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Empty State -->
+  <div *ngIf="!loading && tools.length === 0 && !error" class="empty-state">
+    <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+    </svg>
+    <h3>No Tools Available</h3>
+    <p>We couldn't find any tools in this category.</p>
+    <button class="back-btn" (click)="goBackToUser()">Browse Other Categories</button>
+  </div>
+
+  <!-- Pagination -->
+  <div class="pagination" *ngIf="!loading && tools.length > 0 && totalPages > 1">
+    <button 
+      class="pagination-btn" 
+      (click)="changePage(page - 1)" 
+      [disabled]="page === 1">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+      Previous
+    </button>
+
+    <div class="pagination-numbers">
+      <button 
+        *ngFor="let pageNum of [].constructor(totalPages); let i = index"
+        class="page-number"
+        [class.active]="page === i + 1"
+        (click)="changePage(i + 1)">
+        {{ i + 1 }}
+      </button>
+    </div>
+
+    <button 
+      class="pagination-btn" 
+      (click)="changePage(page + 1)" 
+      [disabled]="page === totalPages">
+      Next
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+    </button>
+  </div>
+</div>

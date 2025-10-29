@@ -4,45 +4,49 @@ import { AvatarModule } from 'primeng/avatar';
 import { BadgeModule } from 'primeng/badge';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../../common/services/auth.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, AvatarModule, BadgeModule, RouterLink],
+  imports: [CommonModule, AvatarModule, BadgeModule, RouterLink, FormsModule],
   templateUrl: './header.html',
   styleUrls: ['./header.css'],
 })
 export class Header implements OnInit {
-  @Input() fullName: string = 'User'; 
-  @Input() profileImageUrl?: string; 
+  @Input() fullName: string = 'User';
+  @Input() profileImageUrl?: string;
   @Input() notificationsCount: number = 0;
 
   dropdownOpen = false;
+  searchTerm: string = ''; // kept for binding only, no logic
 
   constructor(private authService: AuthService, private router: Router, private el: ElementRef) {}
 
   ngOnInit(): void {}
 
   logout() {
-    this.dropdownOpen = false; 
+    this.dropdownOpen = false;
     this.authService.logout();
-    this.router.navigate(['/login']); 
+    this.router.navigate(['/login']);
   }
 
   toggleDropdown(event: Event) {
-    event.stopPropagation(); 
+    event.stopPropagation();
     this.dropdownOpen = !this.dropdownOpen;
   }
 
   get initials(): string {
     if (!this.profileImageUrl && this.fullName) {
       const names = this.fullName.split(' ');
-      return names.map(n => n.charAt(0)).join('').toUpperCase();
+      return names
+        .map((n) => n.charAt(0))
+        .join('')
+        .toUpperCase();
     }
     return '';
   }
 
-  
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: Event) {
     const userProfileEl = this.el.nativeElement.querySelector('.user-profile');

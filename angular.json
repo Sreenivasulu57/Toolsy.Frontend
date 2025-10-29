@@ -23,8 +23,8 @@
             "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "assets": [
-                "src/favicon.ico",
-                  "src/assets",
+              "src/favicon.ico",
+              "src/assets",
               {
                 "glob": "**/*",
                 "input": "public",
@@ -66,7 +66,10 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "buildTarget": "toolsy-frontend:build"
+            "buildTarget": "toolsy-frontend:build",
+            "ssl": true,
+            "sslKey": "C:\\Users\\VSOFT\\AppData\\Local\\mkcert\\localhost-key.pem",
+            "sslCert": "C:\\Users\\VSOFT\\AppData\\Local\\mkcert\\localhost.pem"
           },
           "configurations": {
             "production": {
