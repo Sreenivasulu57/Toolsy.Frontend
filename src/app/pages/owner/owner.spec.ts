@@ -8,9 +8,8 @@ describe('Owner', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Owner]
-    })
-    .compileComponents();
+      imports: [Owner],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(Owner);
     component = fixture.componentInstance;

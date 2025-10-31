@@ -1,4 +1,3 @@
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -6,11 +5,11 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-body, html {
+body,
+html {
   height: 100%;
-  background-color: #f0f2f5; 
+  background-color: #f0f2f5;
 }
-
 
 .login-container {
   display: flex;
@@ -21,12 +20,11 @@ body, html {
   background: #f0f2f5;
 }
 
-
 .login-card {
-  background-color: #ffffff; 
+  background-color: #ffffff;
   padding: 60px 40px;
   border-radius: 12px;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
   width: 100%;
   max-width: 500px;
   transition: transform 0.3s;
@@ -35,7 +33,6 @@ body, html {
 .login-card:hover {
   transform: translateY(-5px);
 }
-
 
 .login-header {
   text-align: center;
@@ -46,24 +43,22 @@ body, html {
 .login-title {
   font-size: 36px;
   font-weight: 700;
-  color: #ff6600; 
+  color: #ff6600;
   letter-spacing: 1px;
   position: relative;
   transition: font-size 0.3s ease;
 }
-
 
 .login-title::after {
   content: '';
   display: block;
   width: 70px;
   height: 4px;
-  background-color: #000000; 
+  background-color: #000000;
   margin: 8px auto 0;
   border-radius: 2px;
   transition: width 0.3s ease-in-out;
 }
-
 
 .login-title:hover::after {
   width: 140px;
@@ -72,7 +67,6 @@ body, html {
 .login-title:hover {
   font-size: 38px;
 }
-
 
 .form-group {
   position: relative;
@@ -105,17 +99,15 @@ body, html {
   transition: 0.3s;
 }
 
-
 .form-group input:focus + label,
 .form-group input:not(:placeholder-shown) + label {
   top: -10px;
   left: 10px;
   font-size: 12px;
-  color: #000000; 
+  color: #000000;
   background: #ffffff;
   padding: 0 4px;
 }
-
 
 .login-button {
   width: 100%;
@@ -152,7 +144,6 @@ body, html {
   color: #000000;
   font-size: 15px;
 }
-
 
 @media screen and (max-width: 768px) {
   .login-card {
@@ -196,5 +187,5 @@ body, html {
   opacity: 0.7;
 }
 .form-group input::placeholder {
-  color: transparent; 
+  color: transparent;
 }

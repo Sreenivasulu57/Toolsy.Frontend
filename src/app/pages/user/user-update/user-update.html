@@ -1,0 +1,182 @@
+<div class="update-container" *ngIf="!loading; else loadingTpl">
+  <h2>Update Profile</h2>
+
+  <form [formGroup]="userForm" (ngSubmit)="onSubmitUser()" class="update-form">
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input
+          id="firstName"
+          type="text"
+          formControlName="firstName"
+          placeholder="Enter first name"
+        />
+        <span
+          class="error"
+          *ngIf="userForm.get('firstName')?.touched && userForm.get('firstName')?.invalid"
+        >
+          First name is required
+        </span>
+      </div>
+
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input id="lastName" type="text" formControlName="lastName" placeholder="Enter last name" />
+        <span
+          class="error"
+          *ngIf="userForm.get('lastName')?.touched && userForm.get('lastName')?.invalid"
+        >
+          Last name is required
+        </span>
+      </div>
+
+      <div class="form-group">
+        <label for="phoneNumber">Phone Number</label>
+        <input
+          id="phoneNumber"
+          type="text"
+          formControlName="phoneNumber"
+          placeholder="Enter phone number"
+        />
+        <span
+          class="error"
+          *ngIf="userForm.get('phoneNumber')?.touched && userForm.get('phoneNumber')?.invalid"
+        >
+          Phone number is required
+        </span>
+      </div>
+
+      <div class="form-group">
+        <label for="dateOfBirth">Date of Birth</label>
+        <input id="dateOfBirth" type="date" formControlName="dateOfBirth" />
+        <span
+          class="error"
+          *ngIf="userForm.get('dateOfBirth')?.touched && userForm.get('dateOfBirth')?.invalid"
+        >
+          Date of birth is required
+        </span>
+      </div>
+
+      <div class="form-group">
+        <label for="gender">Gender</label>
+        <select id="gender" formControlName="gender">
+          <option value="0">Male</option>
+          <option value="1">Female</option>
+          <option value="2">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group full-width">
+        <label for="profileImageUrl">Profile Image URL</label>
+        <input
+          id="profileImageUrl"
+          type="text"
+          formControlName="profileImageUrl"
+          placeholder="Enter profile image URL"
+        />
+      </div>
+    </div>
+
+    <div class="image-preview" *ngIf="userForm.value.profileImageUrl">
+      <img [src]="userForm.value.profileImageUrl" alt="Profile Image" />
+    </div>
+
+    <button type="submit" [disabled]="userForm.invalid || loading">Update Profile</button>
+  </form>
+
+  <p class="success" *ngIf="successMessageUser">{{ successMessageUser }}</p>
+  <p class="error" *ngIf="errorMessageUser">{{ errorMessageUser }}</p>
+
+  <hr />
+
+  <h2>Address Management</h2>
+
+  <form [formGroup]="addressForm" class="update-form">
+    <div class="form-grid">
+      <div class="form-group full-width">
+        <label for="addressLine1">Address Line 1</label>
+        <input
+          id="addressLine1"
+          type="text"
+          formControlName="addressLine1"
+          placeholder="Enter address line 1"
+        />
+      </div>
+
+      <div class="form-group full-width">
+        <label for="addressLine2">Address Line 2</label>
+        <input
+          id="addressLine2"
+          type="text"
+          formControlName="addressLine2"
+          placeholder="Enter address line 2"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="city">City</label>
+        <input id="city" type="text" formControlName="city" placeholder="Enter city" />
+      </div>
+
+      <div class="form-group">
+        <label for="area">Area</label>
+        <input id="area" type="text" formControlName="area" placeholder="Enter area" />
+      </div>
+
+      <div class="form-group">
+        <label for="mandal">Mandal</label>
+        <input id="mandal" type="text" formControlName="mandal" placeholder="Enter mandal" />
+      </div>
+
+      <div class="form-group">
+        <label for="district">District</label>
+        <input id="district" type="text" formControlName="district" placeholder="Enter district" />
+      </div>
+
+      <div class="form-group">
+        <label for="state">State</label>
+        <input id="state" type="text" formControlName="state" placeholder="Enter state" />
+      </div>
+
+      <div class="form-group">
+        <label for="postalCode">Postal Code</label>
+        <input
+          id="postalCode"
+          type="text"
+          formControlName="postalCode"
+          placeholder="Enter postal code"
+        />
+      </div>
+
+      <div class="form-group full-width">
+        <label for="country">Country</label>
+        <input id="country" type="text" formControlName="country" placeholder="Enter country" />
+      </div>
+    </div>
+
+    <button
+      type="button"
+      [disabled]="addressForm.invalid || loading"
+      (click)="onSubmitAddress('add')"
+    >
+      Add Address
+    </button>
+    <button
+      type="button"
+      [disabled]="addressForm.invalid || loading"
+      (click)="onSubmitAddress('update')"
+    >
+      Update Address
+    </button>
+  </form>
+
+  <p class="success" *ngIf="successMessageAddress">{{ successMessageAddress }}</p>
+  <p class="error" *ngIf="errorMessageAddress">{{ errorMessageAddress }}</p>
+</div>
+
+<ng-template #loadingTpl>
+  <div class="loading-container">
+    <div class="spinner"></div>
+    <p>Loading user details...</p>
+  </div>
+</ng-template>

@@ -1,15 +1,13 @@
-/* Header container */
 .header {
   position: sticky;
   top: 0;
   width: 100%;
-  background-color: #fff; /* White background */
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   z-index: 1000;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Inner nav container */
 .nav-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -19,37 +17,30 @@
   justify-content: space-between;
 }
 
-/* Logo */
 .logo a {
   text-decoration: none;
   font-size: 1.5rem;
   font-weight: bold;
-     display: flex;
-    align-items: center;
-  /* color: #ff6600;  Logo in orange */
+  display: flex;
+  align-items: center;
 }
 
 .brand-logo {
-    /* Adjust these values to fit your design */
-    height: 5rem; /* Match the font size for a good vertical alignment */
-    width: auto;
-    margin-right: 7px; /* Space between the logo and the "Toolsy" text */
-    /* Optional: Ensure the image is block-level */
-    display: block; 
+  height: 5rem;
+  width: auto;
+  margin-right: 7px;
 
-      /* NEW: Position it absolutely, vertically centered */
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%); 
-    
-    /* You may need to add left: 0; depending on your setup */
-    left: 0;
-    
-    /* Add padding to the <a> tag to reserve space for the logo */
-    padding-left: 17rem; /* Must be at least the width of your logo */
+  display: block;
+
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  left: 0;
+
+  padding-left: 17rem;
 }
 
-/* Navigation links */
 .nav-links {
   display: flex;
   gap: 2rem;
@@ -57,7 +48,7 @@
 
 .nav-link {
   text-decoration: none;
-  color: #ff6600; /* Orange by default */
+  color: #ff6600;
   font-weight: 600;
   font-size: 1rem;
   transition: color 0.3s ease, border-bottom 0.3s ease;
@@ -66,10 +57,9 @@
 
 .nav-link:hover,
 .nav-link.active {
-  color: #000; /* Black on hover / active */
+  color: #000;
 }
 
-/* Auth buttons */
 .auth-buttons {
   display: flex;
   gap: 1rem;
@@ -86,7 +76,6 @@
   border: 2px solid transparent;
 }
 
-/* Login button style */
 .login {
   background-color: #ff6600;
   color: #fff;
@@ -99,7 +88,6 @@
   border: 2px solid #000;
 }
 
-/* Signup button style */
 .signup {
   background-color: #fff;
   color: #ff6600;
@@ -112,7 +100,6 @@
   border: 2px solid #000;
 }
 
-/* Mobile responsiveness */
 @media (max-width: 768px) {
   .nav-container {
     flex-direction: column;
@@ -120,13 +107,15 @@
     gap: 0.75rem;
   }
 
-  .nav-links, .auth-buttons {
+  .nav-links,
+  .auth-buttons {
     flex-direction: column;
     width: 100%;
     align-items: center;
   }
 
-  .nav-link, .btn {
+  .nav-link,
+  .btn {
     width: 80%;
     text-align: center;
   }
@@ -139,9 +128,9 @@
 }
 
 .logo-orange {
-  color: #ff6600; /* Orange */
+  color: #ff6600;
 }
 
 .logo-black {
-  color: #000; /* Black */
+  color: #000;
 }

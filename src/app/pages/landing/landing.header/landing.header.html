@@ -1,32 +1,31 @@
 <header class="header">
   <div class="nav-container">
-    
-    <!-- Logo / Brand -->
-  <div class="logo">
-  <a routerLink="/">
-    <img src="assets/images/tool_logo.png" alt="Toolsy Logo" class="brand-logo">
+    <div class="logo">
+      <a routerLink="/">
+        <img src="assets/images/tool_logo.png" alt="Toolsy Logo" class="brand-logo" />
 
-    <span class="logo-orange">Tool</span><span class="logo-black">sy</span>
-  </a>
-</div>
+        <span class="logo-orange">Tool</span><span class="logo-black">sy</span>
+      </a>
+    </div>
 
-
-    <!-- Navigation links dynamically rendered -->
     <nav class="nav-links">
-      <a *ngFor="let link of navLinks"
-         [routerLink]="link.path"
-         routerLinkActive="active"
-         class="nav-link">
+      <a
+        *ngFor="let link of navLinks"
+        [routerLink]="link.path"
+        routerLinkActive="active"
+        class="nav-link"
+      >
         {{ link.label }}
       </a>
     </nav>
 
-    <!-- Auth buttons dynamically rendered -->
     <div class="auth-buttons">
-      <a *ngFor="let link of authLinks"
-         [routerLink]="link.path"
-         class="btn"
-         [ngClass]="link.type === 'login' ? 'login' : 'signup'">
+      <a
+        *ngFor="let link of authLinks"
+        [routerLink]="link.path"
+        class="btn"
+        [ngClass]="link.type === 'login' ? 'login' : 'signup'"
+      >
         {{ link.label }}
       </a>
     </div>

@@ -1,0 +1,32 @@
+<div class="search-results-container">
+  <h2 *ngIf="!loading && !error && tools.length">Search Results for “{{ query }}”</h2>
+
+  <div *ngIf="loading" class="loading">
+    <div class="spinner"></div>
+    <p>Loading results...</p>
+  </div>
+
+  <div *ngIf="error && !loading" class="error">
+    <p>{{ error }}</p>
+  </div>
+
+  <div class="tools-grid" *ngIf="!loading && tools.length > 0">
+    <div class="tool-card" *ngFor="let tool of tools" (click)="viewToolDetails(tool.toolId)">
+      <img
+        [src]="tool.toolImages?.[0]?.imageUrl || '/assets/placeholder.png'"
+        alt="{{ tool.name }}"
+        class="tool-img"
+      />
+      <h3 class="tool-name">{{ tool.name }}</h3>
+      <p class="brand">{{ tool.brand }}</p>
+      <p class="desc">
+        {{
+          tool.description.length > 100
+            ? (tool.description | slice : 0 : 100) + '...'
+            : tool.description
+        }}
+      </p>
+      <p class="price">₹{{ tool.dailyRate }}/day</p>
+    </div>
+  </div>
+</div>

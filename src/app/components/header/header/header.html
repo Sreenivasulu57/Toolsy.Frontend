@@ -12,9 +12,9 @@
       placeholder="Search tools, categories..."
       class="search-input"
       [(ngModel)]="searchTerm"
-      disabled
+      (keyup.enter)="performSearch()"
     />
-    <i class="pi pi-search search-icon"></i>
+    <i class="pi pi-search search-icon" (click)="performSearch()"></i>
   </div>
 
   <div class="right-section">

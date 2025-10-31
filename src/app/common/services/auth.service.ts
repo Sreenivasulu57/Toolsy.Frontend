@@ -8,21 +8,16 @@ import { environment } from '../../../environments/environment';
 import { DecodedToken } from '../models/Decode.model';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
-
-
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-    private jwtHelper = new JwtHelperService();
+  private jwtHelper = new JwtHelperService();
   private apiUrl = `${environment.apiUrl}/auth`;
   private tokenKey = 'jwtToken';
 
   constructor(private http: HttpClient) {}
 
-  /**
-   * Login user and save token
-   */
   login(username: string, password: string, type: LoginType): Observable<string> {
     const body = { UserName: username, Password: password, Type: type };
 
@@ -37,28 +32,25 @@ export class AuthService {
       );
   }
 
-   isTokenExpired(): boolean {
+  isTokenExpired(): boolean {
     const token = this.getToken();
     if (!token) return true;
     return this.jwtHelper.isTokenExpired(token);
   }
 
- 
-   refreshToken(): Observable<void> {
-    
+  refreshToken(): Observable<void> {
     return this.http
       .post<ApiResponse<string>>(`${this.apiUrl}/refresh`, {}, { withCredentials: true })
       .pipe(
         switchMap((res) => {
           if (res.success && res.data) {
-            this.saveToken(res.data); 
+            this.saveToken(res.data);
           }
           return of(void 0);
         })
       );
   }
 
-  
   private saveToken(token: string) {
     localStorage.setItem(this.tokenKey, token);
   }
@@ -69,13 +61,11 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem(this.tokenKey);
-    
   }
 
   isLoggedIn(): boolean {
-    return !!this.getToken();
+    return !!this.getToken() && !this.isTokenExpired();
   }
-
 
   getDecodedToken(): DecodedToken | null {
     const token = this.getToken();
@@ -90,11 +80,29 @@ export class AuthService {
 
   getUserRoles(): string[] {
     const decoded = this.getDecodedToken();
-    return decoded?.role || [];
+    if (!decoded) return [];
+
+    const roleClaim =
+      decoded.role ||
+      decoded['roles'] ||
+      decoded['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
+
+    if (!roleClaim) return [];
+
+    return Array.isArray(roleClaim) ? roleClaim : [roleClaim];
   }
 
   getProfileId(): string | null {
     return this.getDecodedToken()?.sub || null;
+  }
+
+  getEmail(): string | null {
+    const decoded = this.getDecodedToken();
+    return (
+      decoded?.email ||
+      decoded?.['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress'] ||
+      null
+    );
   }
 
   isRole(role: string): boolean {

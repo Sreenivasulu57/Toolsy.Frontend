@@ -1,6 +1,7 @@
 export interface DecodedToken {
-  sub: string;         
-  email: string;       
-  role: string[];      
-  exp: number;         
+  sub: string;
+  email: string;
+  role: string[];
+  exp: number;
+  [key: string]: any;
 }

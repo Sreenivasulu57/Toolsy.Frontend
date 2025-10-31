@@ -1,1 +1,120 @@
-<p>ownersignup works!</p>
+<div class="register-container">
+  <h2 class="title">Register as Tool Owner</h2>
+
+  <form #ownerForm="ngForm" (ngSubmit)="register(ownerForm)" class="form-card">
+    <div class="form-group-grid">
+      <input
+        pInputText
+        type="text"
+        name="firstName"
+        [(ngModel)]="owner.firstName"
+        placeholder="First Name"
+        required
+      />
+      <input
+        pInputText
+        type="text"
+        name="lastName"
+        [(ngModel)]="owner.lastName"
+        placeholder="Last Name"
+        required
+      />
+    </div>
+
+    <div class="form-group-grid">
+      <input
+        pInputText
+        type="email"
+        name="email"
+        [(ngModel)]="owner.email"
+        placeholder="Email"
+        required
+      />
+      <input
+        pInputText
+        type="text"
+        name="phoneNumber"
+        [(ngModel)]="owner.phoneNumber"
+        placeholder="Phone Number"
+        maxlength="10"
+        required
+      />
+    </div>
+
+    <div class="form-group-grid">
+      <input
+        [type]="dobInputType"
+        name="dateOfBirth"
+        [(ngModel)]="owner.dateOfBirth"
+        placeholder="Date of Birth"
+        (focus)="onDobFocus()"
+        (blur)="onDobBlur($event)"
+        required
+      />
+
+      <select name="gender" [(ngModel)]="owner.gender" class="custom-select" required>
+        <option value="" disabled>Select Gender</option>
+        <option [value]="Gender.Male">Male</option>
+        <option [value]="Gender.Female">Female</option>
+      </select>
+    </div>
+
+    <div class="form-group-grid passwords">
+      <div>
+        <input
+          pInputText
+          type="password"
+          name="password"
+          [(ngModel)]="owner.password"
+          placeholder="Password"
+          required
+        />
+      </div>
+      <div>
+        <input
+          pInputText
+          type="password"
+          name="confirmPassword"
+          [(ngModel)]="confirmPassword"
+          placeholder="Confirm Password"
+          required
+        />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <input
+        pInputText
+        type="text"
+        name="businessName"
+        [(ngModel)]="owner.businessName"
+        placeholder="Business Name"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <textarea
+        pInputText
+        name="businessDescription"
+        [(ngModel)]="owner.businessDescription"
+        placeholder="Business Description"
+        rows="3"
+      ></textarea>
+    </div>
+
+    <div class="form-group">
+      <input
+        pInputText
+        type="text"
+        name="businessRegistrationNumber"
+        [(ngModel)]="owner.businessRegistrationNumber"
+        placeholder="Business Registration No."
+      />
+    </div>
+
+    <button pButton type="submit" label="Register Owner" class="submit-btn"></button>
+  </form>
+
+  <p-toast></p-toast>
+</div>

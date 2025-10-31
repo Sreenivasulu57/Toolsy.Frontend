@@ -1,0 +1,156 @@
+.register-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(135deg, #eef2f3, #cfd9df);
+  min-height: 100vh;
+  justify-content: flex-start;
+  padding: 2rem 1.5rem;
+}
+
+.title {
+  color: #2c3e50;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  text-align: center;
+  letter-spacing: 0.5px;
+  margin-top: 1rem;
+}
+
+.form-card {
+  background: #fff;
+  border-radius: 0.8rem;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 600px;
+  transition: all 0.3s ease-in-out;
+  margin-top: 1rem;
+}
+
+.form-card:hover {
+  transform: translateY(-2px);
+}
+
+.form-group,
+.form-group-grid {
+  margin-bottom: 0.9rem;
+}
+
+.form-group-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+}
+
+.form-group-grid.passwords {
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+input[pInputText],
+textarea[pInputText],
+.custom-select {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  outline: none;
+  box-sizing: border-box;
+}
+
+input[pInputText]:focus,
+textarea[pInputText]:focus,
+.custom-select:focus {
+  border-color: #0077b6;
+  box-shadow: 0 0 6px rgba(0, 119, 182, 0.25);
+}
+
+.custom-select {
+  background-color: #f9f9f9;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,<svg width='10' height='6' xmlns='http://www.w3.org/2000/svg'><path d='M0 0l5 6 5-6z' fill='%23333'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 0.8rem center;
+  background-size: 10px 6px;
+}
+
+::ng-deep .submit-btn.p-button {
+  width: 100%;
+  background: linear-gradient(90deg, #0077b6, #00b4d8) !important;
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  font-size: 1rem !important;
+  padding: 0.7rem !important;
+  border: none !important;
+  border-radius: 8px !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease-in-out !important;
+  margin-top: 0.6rem !important;
+  letter-spacing: 0.5px !important;
+  box-shadow: 0 4px 12px rgba(0, 119, 182, 0.25) !important;
+}
+
+::ng-deep .submit-btn.p-button:hover {
+  background: linear-gradient(90deg, #ff6b6b, #f06543) !important;
+  color: #e3f2fd !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 18px rgba(0, 119, 182, 0.4) !important;
+}
+
+@media (max-width: 768px) {
+  .form-card {
+    padding: 1.2rem;
+  }
+
+  .form-group-grid {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+
+  .form-group-grid.passwords {
+    grid-template-columns: 1fr;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  input[pInputText],
+  textarea[pInputText],
+  .custom-select {
+    font-size: 0.85rem;
+    padding: 0.55rem 0.7rem;
+  }
+
+  .submit-btn {
+    font-size: 0.95rem;
+    padding: 0.65rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-card {
+    padding: 1rem;
+    max-width: 95%;
+  }
+
+  .title {
+    font-size: 1.3rem;
+  }
+
+  input[pInputText],
+  textarea[pInputText],
+  .custom-select {
+    font-size: 0.8rem;
+    padding: 0.5rem 0.6rem;
+  }
+
+  .submit-btn {
+    font-size: 0.9rem;
+    padding: 0.6rem;
+  }
+}

@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [ButtonModule],
   templateUrl: './signup.html',
-  styleUrls: ['./signup.css']
+  styleUrls: ['./signup.css'],
 })
 export class Signup {
   constructor(private router: Router) {}

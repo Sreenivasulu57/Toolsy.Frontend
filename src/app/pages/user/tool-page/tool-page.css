@@ -6,7 +6,6 @@
   min-height: 100vh;
 }
 
-/* Back Button */
 .back-btn-container {
   margin-bottom: 24px;
 }
@@ -41,7 +40,6 @@
   transform: translateX(-2px);
 }
 
-/* Toolbar */
 .toolbar {
   display: flex;
   justify-content: space-between;
@@ -112,7 +110,6 @@
   border-color: #e94f1a;
 }
 
-/* Loading State */
 .loading-state {
   text-align: center;
   padding: 80px 20px;
@@ -129,8 +126,12 @@
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .loading-state p {
@@ -138,7 +139,6 @@
   font-size: 1rem;
 }
 
-/* Error State */
 .error-state {
   text-align: center;
   padding: 80px 20px;
@@ -173,7 +173,6 @@
   box-shadow: 0 4px 12px rgba(233, 79, 26, 0.3);
 }
 
-/* Tools Grid */
 .tools-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -181,7 +180,6 @@
   margin-bottom: 40px;
 }
 
-/* Tool Card */
 .tool-card {
   background: #fff;
   border-radius: 12px;
@@ -198,7 +196,6 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
-/* Tool Image */
 .tool-image-wrapper {
   position: relative;
   width: 100%;
@@ -292,7 +289,6 @@
   transform: scale(1.05);
 }
 
-/* Tool Content */
 .tool-content {
   padding: 20px;
   display: flex;
@@ -344,7 +340,6 @@
   flex: 1;
 }
 
-/* Rating */
 .tool-rating {
   display: flex;
   align-items: center;
@@ -374,7 +369,6 @@
   color: #666;
 }
 
-/* Specifications */
 .tool-specs-preview {
   display: flex;
   gap: 8px;
@@ -390,7 +384,6 @@
   font-weight: 500;
 }
 
-/* Operator Badge */
 .operator-badge {
   display: inline-flex;
   align-items: center;
@@ -404,7 +397,6 @@
   width: fit-content;
 }
 
-/* Pricing */
 .tool-pricing {
   border-top: 1px solid #f0f0f0;
   padding-top: 16px;
@@ -449,7 +441,6 @@
   border-radius: 4px;
 }
 
-/* Action Buttons */
 .tool-actions {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -495,7 +486,6 @@
   background: #fff5f2;
 }
 
-/* Empty State */
 .empty-state {
   text-align: center;
   padding: 80px 20px;
@@ -518,7 +508,6 @@
   margin-bottom: 24px;
 }
 
-/* Pagination */
 .pagination {
   display: flex;
   justify-content: center;
@@ -581,7 +570,6 @@
   border-color: #e94f1a;
 }
 
-/* Responsive Design */
 @media (max-width: 1200px) {
   .tools-grid {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));

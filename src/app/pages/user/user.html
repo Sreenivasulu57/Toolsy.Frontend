@@ -1,14 +1,14 @@
-<app-header 
-  [fullName]="user() ? (user()?.firstName + ' ' + user()?.lastName) : ''"
+<app-header
+  [fullName]="user() ? user()?.firstName + ' ' + user()?.lastName : ''"
   [profileImageUrl]="user()?.profileImageUrl"
-  [notificationsCount]="3">
+  [notificationsCount]="3"
+>
 </app-header>
 
 <div class="page-container">
   <app-sidebar></app-sidebar>
 
   <main class="main-content">
-
     <div *ngIf="loading()" class="loading-state">
       <p>Loading your dashboard...</p>
     </div>
@@ -17,12 +17,11 @@
       <p>{{ error() }}</p>
     </div>
 
-
     <ng-container *ngIf="!loading() && isDashboard() && user()">
       <app-welcome-banner></app-welcome-banner>
       <app-tool-catalog></app-tool-catalog>
+      <app-footer></app-footer>
     </ng-container>
-
 
     <router-outlet></router-outlet>
   </main>

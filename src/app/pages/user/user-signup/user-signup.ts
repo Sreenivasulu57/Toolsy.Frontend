@@ -15,7 +15,7 @@ import { Gender } from '../../../enums/gender.enum';
   imports: [CommonModule, FormsModule, ButtonModule, InputTextModule, ToastModule],
   templateUrl: './user-signup.html',
   styleUrls: ['./user-signup.css'],
-  providers: [MessageService] 
+  providers: [MessageService],
 })
 export class UserSignup {
   Gender = Gender;
@@ -25,7 +25,7 @@ export class UserSignup {
     lastName: '',
     email: '',
     phoneNumber: '',
-    dateOfBirth: new Date(),
+    dateOfBirth: null,
     gender: Gender.Male,
     password: '',
   };
@@ -33,18 +33,37 @@ export class UserSignup {
   confirmPassword: string = '';
   passwordMismatch = false;
 
+  dobInputType: string = 'text';
+
   constructor(private userService: UserService, private messageService: MessageService) {}
 
-  
+  onDobFocus() {
+    this.dobInputType = 'date';
+  }
+
+  onDobBlur(event: FocusEvent) {
+    const input = event.target as HTMLInputElement;
+    if (!input.value) {
+      this.dobInputType = 'text';
+    }
+  }
+
   get userDateOfBirthString(): string {
-    return this.user.dateOfBirth
-      ? this.user.dateOfBirth.toISOString().split('T')[0]
-      : '';
+    return this.user.dateOfBirth ? this.user.dateOfBirth.toISOString().split('T')[0] : '';
   }
 
   set userDateOfBirthString(value: string) {
+    if (!value) {
+      this.user.dateOfBirth = null;
+      return;
+    }
+
     const [year, month, day] = value.split('-').map(Number);
-    this.user.dateOfBirth = new Date(Date.UTC(year, month - 1, day));
+    if (!isNaN(year) && !isNaN(month) && !isNaN(day)) {
+      this.user.dateOfBirth = new Date(Date.UTC(year, month - 1, day));
+    } else {
+      this.user.dateOfBirth = null;
+    }
   }
 
   register(form: NgForm) {
@@ -53,8 +72,8 @@ export class UserSignup {
         severity: 'warn',
         summary: 'Warning',
         detail: 'Please fill all required fields',
-        styleClass: 'custom-warn', 
-        life: 3000
+        styleClass: 'custom-warn',
+        life: 3000,
       });
       return;
     }
@@ -65,20 +84,21 @@ export class UserSignup {
         severity: 'warn',
         summary: 'Warning',
         detail: 'Passwords do not match',
-        styleClass: 'custom-warn', 
-        life: 3000
+        styleClass: 'custom-warn',
+        life: 3000,
       });
       return;
     }
 
     this.passwordMismatch = false;
 
-   
     const payload = {
       ...this.user,
       gender: Number(this.user.gender),
-      dateOfBirth: this.user.dateOfBirth.toISOString().split('.')[0] + 'Z',
-    } as unknown as RegisterUserDto; 
+      dateOfBirth: this.user.dateOfBirth
+        ? this.user.dateOfBirth.toISOString().split('.')[0] + 'Z'
+        : null,
+    } as unknown as RegisterUserDto;
 
     console.log('✅ Payload being sent:', payload);
 
@@ -88,11 +108,12 @@ export class UserSignup {
           severity: 'success',
           summary: 'Success',
           detail: message,
-          styleClass: 'custom-success', 
-          life: 3000
+          styleClass: 'custom-success',
+          life: 3000,
         });
         form.resetForm();
         this.confirmPassword = '';
+        this.dobInputType = 'text';
       },
       error: (err) => {
         console.error('❌ Registration Error:', err);
@@ -101,8 +122,8 @@ export class UserSignup {
           severity: 'error',
           summary: 'Error',
           detail: message,
-          styleClass: 'custom-error', 
-          life: 3000
+          styleClass: 'custom-error',
+          life: 3000,
         });
       },
     });
