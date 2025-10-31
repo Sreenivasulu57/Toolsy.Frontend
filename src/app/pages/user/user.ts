@@ -23,7 +23,6 @@ export class User implements OnInit {
   loading = signal(true);
   error = signal<string | null>(null);
 
-
   isDashboard = signal<boolean>(false);
 
   constructor(
@@ -36,25 +35,27 @@ export class User implements OnInit {
   ngOnInit() {
     this.loadUserProfile();
 
-   
     this.setDashboardState(this.router.url);
 
-   
-    this.router.events.pipe(filter(e => e instanceof NavigationEnd))
+    this.router.events
+      .pipe(filter((e) => e instanceof NavigationEnd))
       .subscribe((e: NavigationEnd) => {
         this.setDashboardState(e.urlAfterRedirects ?? e.url);
       });
   }
 
-
   private setDashboardState(url: string) {
-
     const cleaned = url.split('?')[0].replace(/\/+$/, '');
 
     const isExactUser = cleaned === '/user' || cleaned === '/user';
     this.isDashboard.set(isExactUser);
 
-    console.debug('[User] setDashboardState', { url, cleaned, isExactUser, routerUrl: this.router.url });
+    console.debug('[User] setDashboardState', {
+      url,
+      cleaned,
+      isExactUser,
+      routerUrl: this.router.url,
+    });
   }
 
   private loadUserProfile() {

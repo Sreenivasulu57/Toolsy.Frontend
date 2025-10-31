@@ -7,8 +7,8 @@ describe('Header', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Header] // ✅ standalone component goes in imports
-    }).compileComponents(); // ✅ no argument here
+      imports: [Header] 
+    }).compileComponents(); 
 
     fixture = TestBed.createComponent(Header);
     component = fixture.componentInstance;

@@ -4,6 +4,7 @@ import { AvatarModule } from 'primeng/avatar';
 import { BadgeModule } from 'primeng/badge';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../../common/services/auth.service';
+import { ToolService } from '../../../common/services/tool.service';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -19,9 +20,14 @@ export class Header implements OnInit {
   @Input() notificationsCount: number = 0;
 
   dropdownOpen = false;
-  searchTerm: string = ''; // kept for binding only, no logic
+  searchTerm: string = '';
 
-  constructor(private authService: AuthService, private router: Router, private el: ElementRef) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private el: ElementRef,
+    private toolService: ToolService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -34,6 +40,13 @@ export class Header implements OnInit {
   toggleDropdown(event: Event) {
     event.stopPropagation();
     this.dropdownOpen = !this.dropdownOpen;
+  }
+
+  performSearch() {
+    const query = this.searchTerm.trim();
+    if (query) {
+      this.router.navigate(['/user/search'], { queryParams: { q: query } });
+    }
   }
 
   get initials(): string {

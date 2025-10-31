@@ -2,7 +2,7 @@
   background-color: #0c1325;
   color: #d1d5db;
   padding: 3rem 2rem;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 .footer-content {
@@ -23,16 +23,15 @@
 }
 
 .tool {
-  color: #f97316; /* Orange */
+  color: #f97316; 
 }
 
 .sy {
   color: #fff;
 }
 
-.brand>.tool:hover{
-
-  background-color:darkblue;
+.brand > .tool:hover {
+  background-color: darkblue;
 }
 
 .tool-icon {

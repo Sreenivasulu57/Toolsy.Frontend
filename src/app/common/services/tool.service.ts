@@ -1,7 +1,8 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
+import { Tool } from '../models/tool.model';
 
 @Injectable({ providedIn: 'root' })
 export class ToolService {
@@ -9,7 +10,6 @@ export class ToolService {
   private apiUrl = `${environment.apiUrl}/tool`;
   private subToolApiUrl = `${environment.apiUrl}/sub-tool-category`;
 
-  /** 🔹 Get tools by subcategory (with pagination, sorting, search) */
   getToolsBySubCategory(
     subCategoryId: string,
     page: number = 1,
@@ -28,7 +28,6 @@ export class ToolService {
     return this.http.get<any>(`${this.subToolApiUrl}/get-by-subcategoryid`, { params });
   }
 
-  /** 🔹 Get tool by ID (requires JWT) */
   getToolById(toolId: string): Observable<any> {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders({
@@ -39,5 +38,13 @@ export class ToolService {
     const params = new HttpParams().set('tooldId', toolId);
 
     return this.http.get<any>(`${this.apiUrl}/get-by-id`, { headers, params });
+  }
+
+  searchTools(query: string): Observable<Tool[]> {
+    const params = new HttpParams().set('query', query);
+
+    return this.http
+      .get<{ success: boolean; message: string; data: Tool[] }>(`${this.apiUrl}/search`, { params })
+      .pipe(map((res) => res.data || []));
   }
 }

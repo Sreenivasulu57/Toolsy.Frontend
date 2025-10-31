@@ -1,1 +1,28 @@
-<p>owner works!</p>
+<app-header
+  [fullName]="owner()?.firstName + ' ' + owner()?.lastName"
+  [profileImageUrl]="owner()?.profileImageUrl"
+  [notificationsCount]="3"
+>
+</app-header>
+
+<div class="page-container">
+  <app-sidebar></app-sidebar>
+
+  <main class="main-content">
+    <div *ngIf="loading()" class="loading-state">
+      <p>Loading your dashboard...</p>
+    </div>
+
+    <div *ngIf="error() && !loading()" class="error-state">
+      <p>{{ error() }}</p>
+    </div>
+
+    <ng-container *ngIf="!loading() && isDashboard() && owner()">
+      <app-welcome-banner></app-welcome-banner>
+      <app-tool-catalog></app-tool-catalog>
+      <app-footer></app-footer>
+    </ng-container>
+
+    <router-outlet></router-outlet>
+  </main>
+</div>

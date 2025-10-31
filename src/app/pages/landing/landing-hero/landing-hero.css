@@ -1,15 +1,14 @@
 :root {
-  --primary-orange: #ff9800; /* Toolsy Orange */
-  --accent-blue: #6a5acd; /* Primary from banner-cta (Purple) */
+  --primary-orange: #ff9800;
+  --accent-blue: #6a5acd;
   --text-dark: #1f2937;
   --text-grey: #4b5563;
   --bg-light: #f9fafb;
   --shadow-medium: 0 10px 30px rgba(0, 0, 0, 0.1);
 
-  /* New variables for the creative process section */
   --step-1-color: var(--primary-orange);
   --step-2-color: var(--accent-blue);
-  --step-3-color: #4caf50; /* Success Green */
+  --step-3-color: #4caf50;
 }
 
 .hero {
@@ -107,7 +106,6 @@
   margin-top: 20px;
 }
 
-/*Applyting Css for Banner (Card Section below the hero) */
 .banner-section {
   margin-top: 40px;
   padding: 30px 0;
@@ -115,7 +113,6 @@
 }
 
 .banner-container {
-  /* This container is for the 4 cards, not the slider */
   display: flex;
   justify-content: center;
   align-items: stretch;
@@ -124,7 +121,6 @@
   max-width: 1800px;
   margin: auto;
 }
-
 
 .banner-card {
   background: #fff;
@@ -161,33 +157,29 @@
   font-size: 14px;
 }
 
-/* === START New Fixed Banner Styles (The dark section) === */
 .banner-fixed {
-  /* Dark background color from the image */
   background-color: #120b22;
   color: #ffffff;
   display: flex;
   justify-content: space-between;
-  /* Reduced height and adjusted padding/alignment */
+
   align-items: flex-start;
-  /* Moved content up */
+
   padding: 50px 15%;
-  /* Reduced top/bottom padding */
+
   min-height: 300px;
-  margin-bottom:-20px;
+  margin-bottom: -20px;
 }
 
 .banner-content-left {
-  /* Takes up about 60% of the space */
   flex-basis: 60%;
   max-width: 600px;
   margin-top: -50px;
-  /* Kept your specific adjustment */
 }
 
 .banner-content-left h1 {
   font-size: 58px;
-  /* Large, bold title */
+
   font-weight: 800;
   line-height: 1.1;
   margin-bottom: 20px;
@@ -195,16 +187,15 @@
 
 .banner-content-left p {
   font-size: 20px;
-  /* Descriptive subtitle */
+
   color: #c0b8d2;
-  /* Slightly lighter text color */
+
   margin-bottom: 30px;
 }
 
 .banner-cta {
-  /* Overriding existing btn-primary for the banner look */
   background-color: #6a5acd;
-  /* Primary button color */
+
   border-color: #6a5acd;
   color: #ffffff;
   padding: 12px 30px;
@@ -218,9 +209,7 @@
   box-shadow: 0 5px 15px rgba(106, 90, 205, 0.4);
 }
 
-
 .banner-content-right {
-  /* Contains the three feature buttons */
   flex-basis: 30%;
   display: flex;
   flex-direction: column;
@@ -237,121 +226,104 @@
   font-weight: 500;
   cursor: pointer;
   text-align: left;
-  /* Align text to the left */
+
   transition: background-color 0.3s, box-shadow 0.3s, transform 0.1s;
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* Base style for all feature buttons (dark) */
 .primary-feature,
 .secondary-feature {
   background-color: #2b233a;
-  /* Darker, slightly transparent background */
 }
 
-/* Highlight the active button */
 .feature-btn.active {
   background-color: #6a5acd;
-  /* Bright purple highlight */
+
   transform: translateY(-2px);
-  /* Slight lift to indicate selection */
+
   box-shadow: 0 5px 15px rgba(106, 90, 205, 0.4), inset 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .feature-btn:not(.active):hover {
   background-color: #3f3551;
-  /* Darken on hover for non-active buttons */
 }
 
 .feature-btn.active:hover {
   background-color: #7b68ee;
-  /* Slightly brighter hover for active button */
 }
 
-/* === END New Fixed Banner Styles === */
-
-
-/* ===========================
-   HOW IT WORKS SECTION
-=========================== */
-
-/* --- VARIABLES & BASE STYLES --- */
 :root {
-    --primary-color: #3b82f6; /* A clean blue for the curtain */
-    --step-1-color: #60a5fa; /* Light Blue */
-    --step-2-color: #fbbf24; /* Amber/Orange */
-    --step-3-color: #34d399; /* Green */
-    --arrow-color: #d1d5db; /* Light gray for arrows */
+  --primary-color: #3b82f6;
+  --step-1-color: #60a5fa;
+  --step-2-color: #fbbf24;
+  --step-3-color: #34d399;
+  --arrow-color: #d1d5db;
 }
 
 .how-it-works-section {
-    padding: 30px 20px;
-    background-color: #f3f4f6; /* Light gray background */
-    text-align: center;
-    margin-bottom:20px;
+  padding: 30px 20px;
+  background-color: #f3f4f6;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-   padding-bottom:20px;
-   margin-top: -15px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-bottom: 20px;
+  margin-top: -15px;
 }
 
 h2 {
-    font-size: 2.5rem;
-    color: #1f2937;
-    margin-bottom: 10px;
+  font-size: 2.5rem;
+  color: #1f2937;
+  margin-bottom: 10px;
 }
 
 .subtitle {
-    color: #6b7280;
-    margin-bottom: 50px;
+  color: #6b7280;
+  margin-bottom: 50px;
 }
 
-/* --- GRID LAYOUT --- */
 .steps-grid {
-    display: grid;
-    /* 3 cards (1fr) and 2 arrows (auto) */
-    grid-template-columns: 1fr 50px 1fr 50px 1fr; 
-    gap: 20px;
-    align-items: center;
+  display: grid;
+
+  grid-template-columns: 1fr 50px 1fr 50px 1fr;
+  gap: 20px;
+  align-items: center;
 }
 
-/* --- ARROW STYLING --- */
 .step-arrow {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%; /* Ensure it spans the card height if needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
 .step-arrow svg {
-    width: 30px;
-    height: 30px;
-    color: var(--arrow-color);
+  width: 30px;
+  height: 30px;
+  color: var(--arrow-color);
 }
 
-/* --- CARD STYLING & CURTAIN EFFECT --- */
 .step-card {
-    position: relative;
-    padding: 40px 25px;
-    background-color: #ffffff;
-    border-radius: 15px;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
-    overflow: hidden; /* CRITICAL: Hides the curtain initially */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    z-index: 1; /* Ensure card content is above the curtain */
+  position: relative;
+  padding: 40px 25px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 1;
 }
 
 .step-card:hover {
-    transform: translateY(-5px); /* Subtle lift on hover */
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
 }
 
-/* --- CURTAIN PSEUDO-ELEMENT --- */
 .step-card::before {
-    content: "";
+  content: '';
   position: absolute;
   top: -100%;
   left: 0;
@@ -361,73 +333,76 @@ h2 {
   z-index: 0;
 }
 
-/* Apply color and slide the curtain DOWN on hover */
 .step-card:hover::before {
-  top:0;
+  top: 0;
 }
 
-/* Assign unique colors to each card's curtain */
-.step-1::before { background: linear-gradient(135deg, #007bff, #00c6ff);}
-.step-2::before { background: linear-gradient(135deg, #ff6a00, #ffb347); }
-.step-3::before { background: linear-gradient(135deg, #28a745, #9be15d); }
+.step-1::before {
+  background: linear-gradient(135deg, #007bff, #00c6ff);
+}
+.step-2::before {
+  background: linear-gradient(135deg, #ff6a00, #ffb347);
+}
+.step-3::before {
+  background: linear-gradient(135deg, #28a745, #9be15d);
+}
 
-/* --- CONTENT STYLING (Ensure content changes color to remain visible) --- */
 .icon-wrapper {
-    margin-bottom: 15px;
-    position:relative;
-    z-index:2;
+  margin-bottom: 15px;
+  position: relative;
+  z-index: 2;
 }
 
 .icon {
-    font-size: 3rem;
-    color:black;
-    transition: color 0.4s ease-out;
-    display: inline-block;
+  font-size: 3rem;
+  color: black;
+  transition: color 0.4s ease-out;
+  display: inline-block;
 }
 
 h3 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-    color: #1f2937;
-    transition: color 0.4s ease-out;
-    position:relative;
-     z-index: 2; 
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #1f2937;
+  transition: color 0.4s ease-out;
+  position: relative;
+  z-index: 2;
 }
 
 .step-card p {
-    color: #6b7280;
-    transition: color 0.4s ease-out;
-    /* Ensure paragraph is above the curtain */
-    position: relative; 
-    z-index: 2; 
+  color: #6b7280;
+  transition: color 0.4s ease-out;
+
+  position: relative;
+  z-index: 2;
 }
 
-/* Change content color when the curtain is applied (on hover) */
 .step-card:hover .icon,
 .step-card:hover h3,
-.step-card:hover p 
-{
-    color: #ffffff; /* White text/icons on hover for contrast */
+.step-card:hover p {
+  color: #ffffff;
 }
 
-/* Override the default icon color for each step on hover */
-.step-1:hover .icon { color: #ffffff; }
-.step-2:hover .icon { color: #ffffff; }
-.step-3:hover .icon { color: #ffffff; }
+.step-1:hover .icon {
+  color: #ffffff;
+}
+.step-2:hover .icon {
+  color: #ffffff;
+}
+.step-3:hover .icon {
+  color: #ffffff;
+}
 
-/* --- MOBILE STYLING (Optional, but recommended) --- */
 @media (max-width: 992px) {
-    .steps-grid {
-        /* Stack cards vertically for mobile view */
-        grid-template-columns: 1fr;
-    }
-    .step-arrow {
-        /* Make the arrow point down on mobile */
-        transform: rotate(90deg);
-        margin: 10px 0;
-        height: auto;
-    }
-    .step-arrow:last-of-type {
-        display: none; /* Hide the last arrow */
-    }
+  .steps-grid {
+    grid-template-columns: 1fr;
+  }
+  .step-arrow {
+    transform: rotate(90deg);
+    margin: 10px 0;
+    height: auto;
+  }
+  .step-arrow:last-of-type {
+    display: none;
+  }
 }

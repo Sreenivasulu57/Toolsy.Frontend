@@ -42,7 +42,6 @@ export class ToolDetails implements OnInit {
     if (id) this.fetchTool(id);
   }
 
-  /** 🔹 Fetch tool details (updated for single tool object) */
   fetchTool(id: string) {
     this.loading.set(true);
     this.toolService.getToolById(id).subscribe({
@@ -50,7 +49,6 @@ export class ToolDetails implements OnInit {
         const toolData = response?.data;
 
         if (toolData) {
-          // ✅ Ensure numeric condition value
           toolData.condition = Number(toolData.condition);
 
           console.log('Tool fetched:', toolData);
@@ -58,7 +56,6 @@ export class ToolDetails implements OnInit {
 
           this.tool.set(toolData);
 
-          // ✅ Default image to first available
           if (toolData.toolImages?.length > 0) {
             this.selectedImage.set(toolData.toolImages[0].imageUrl);
           }
@@ -76,7 +73,6 @@ export class ToolDetails implements OnInit {
     });
   }
 
-  /** 🔹 Back button */
   goBack() {
     if (this.subCategoryId) {
       this.router.navigate(['/user/subcategory', this.subCategoryId, 'tools']);
@@ -85,13 +81,11 @@ export class ToolDetails implements OnInit {
     }
   }
 
-  /** 🔹 Image selector */
   selectImage(imageUrl: string, index: number) {
     this.selectedImage.set(imageUrl);
     this.selectedImageIndex.set(index);
   }
 
-  /** 🔹 Condition display text */
   getConditionText(condition?: ToolCondition): string {
     switch (condition) {
       case ToolCondition.New:
@@ -109,7 +103,6 @@ export class ToolDetails implements OnInit {
     }
   }
 
-  /** 🔹 Condition badge color */
   getConditionClass(condition?: ToolCondition): string {
     switch (condition) {
       case ToolCondition.New:
@@ -126,7 +119,6 @@ export class ToolDetails implements OnInit {
     }
   }
 
-  /** 🔹 Calculate total price */
   getTotalPrice(): number {
     const tool = this.tool();
     if (!tool) return 0;
@@ -149,7 +141,6 @@ export class ToolDetails implements OnInit {
     return rate * this.quantity;
   }
 
-  /** 🔹 Check availability (mock for now) */
   onDateChange() {
     if (this.startDate && this.endDate) {
       this.checkingAvailability.set(true);
@@ -160,7 +151,6 @@ export class ToolDetails implements OnInit {
     }
   }
 
-  /** 🔹 Book & Favorites */
   bookTool() {
     alert('Booking feature coming soon!');
   }
